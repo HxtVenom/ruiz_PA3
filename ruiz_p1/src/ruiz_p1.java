@@ -211,7 +211,6 @@ public class ruiz_p1 {
             System.out.println("New Session? (Y or N)");
             userChar = scn.next().charAt(0);
             if(userChar == 'N'){
-
                 System.out.printf("\nThank you for participating, hope to see you again soon!");
                 quit = true;
             }
