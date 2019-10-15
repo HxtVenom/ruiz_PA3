@@ -157,7 +157,6 @@ public class ruiz_p1 {
     }
 
 
-
     public static void main(String[] args){
         SecureRandom rand = new SecureRandom();
         Scanner scn = new Scanner(System.in);
