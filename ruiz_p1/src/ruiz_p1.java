@@ -93,7 +93,7 @@ public class ruiz_p1 {
         System.out.println("How much is " + num1 + " plus " + num2 + "?");
         userIn = scn.nextDouble();
 
-        if(Math.abs(ans - userIn) > 0.0001){
+        if(Math.abs(ans - userIn) > 0.01){
             response(rand, false);
             corr[1]++;
         }else{
@@ -111,7 +111,7 @@ public class ruiz_p1 {
         System.out.println("How much is " + num1 + " minus " + num2 + "?");
         userIn = scn.nextDouble();
 
-        if(Math.abs(ans - userIn) > 0.0001){
+        if(Math.abs(ans - userIn) > 0.01){
             response(rand, false);
             corr[1]++;
         }else{
@@ -129,7 +129,7 @@ public class ruiz_p1 {
         System.out.println("How much is " + num1 + " times " + num2 + "?");
         userIn = scn.nextDouble();
 
-        if(Math.abs(ans - userIn) > 0.0001){
+        if(Math.abs(ans - userIn) > 0.01){
             response(rand, false);
             corr[1]++;
         }else{

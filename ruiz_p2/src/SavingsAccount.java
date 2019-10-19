@@ -7,8 +7,8 @@ public class SavingsAccount {
         savingsBalance = 0;
     }
 
-    public static void modifyAnnualInterestRate(double interestRate){
-        annualInterestRate = interestRate / 100.0;
+    public static void modifyInterestRate(double interestRate){
+        annualInterestRate = interestRate / 100;
     }
 
     public static double getAnnualInterestRate(){
