@@ -141,13 +141,16 @@ public class ruiz_p1 {
     public static void divide(SecureRandom rand, Scanner scn, int difficulty, int[] corr){
         int num1 = rand.nextInt(difficulty);
         int num2 = rand.nextInt(difficulty);
+        while(num2 == 0){
+            num2 = rand.nextInt(difficulty);
+        }
         double ans = (double)num1 / num2;
         double userIn;
 
         System.out.println("How much is " + num1 + " divided by " + num2 + "?");
         userIn = scn.nextDouble();
 
-        if(Math.abs(ans - userIn) > 0.0001){
+        if(Math.abs(ans - userIn) > 0.01){
             response(rand, false);
             corr[1]++;
         }else{
@@ -160,8 +163,10 @@ public class ruiz_p1 {
     public static void main(String[] args){
         SecureRandom rand = new SecureRandom();
         Scanner scn = new Scanner(System.in);
+        final int NUM_QUESTIONS = 10;
         int difficulty;
         int problemChoice;
+        int lastProblem = 0;
         char userChar;
         boolean random = false;
         boolean quit = false;
@@ -180,9 +185,14 @@ public class ruiz_p1 {
             int[] answerCorr = {0, 0};
 
             //Loops 10 questions per session
-            for(int i = 0; i < 10; ++i) {
+            for(int i = 0; i < NUM_QUESTIONS; ++i) {
                 if(random){
                     problemChoice = rand.nextInt(4) + 1;
+
+                    if(problemChoice == lastProblem){
+                        problemChoice = rand.nextInt(4) + 1;
+                    }
+                    lastProblem = problemChoice;
                 }
 
                 switch(problemChoice){
@@ -201,15 +211,25 @@ public class ruiz_p1 {
                 };
             }
 
-            percCorrect = (answerCorr[0] / 10.0) * 100;
+            percCorrect = (answerCorr[0] / (double)NUM_QUESTIONS) * 100;
             System.out.println("Correct: " + answerCorr[0]);
             System.out.println("Incorrect: " + answerCorr[1]);
-            System.out.printf("Percentage Correct: %.2f\n\n", percCorrect);
+            System.out.printf("Percentage Correct: %.2f\n", percCorrect);
+            if((percCorrect - 75.0) < 0){
+                System.out.println("Please ask your teacher for extra help.");
+            }else{
+                System.out.println("Congratulations, you are ready to go to the next level!");
+            }
+            System.out.println();
 
             //Check for new session
             System.out.println("New Session? (Y or N)");
             userChar = scn.next().charAt(0);
-            if(userChar == 'N'){
+            while((userChar != 'N') && (userChar !='Y') && (userChar != 'n') && (userChar != 'y')){
+                System.out.println("Invalid choice, try again (Y or N)");
+                userChar = scn.next().charAt(0);
+            }
+            if((userChar == 'N') || (userChar == 'n')){
                 System.out.printf("\nThank you for participating, hope to see you again soon!");
                 quit = true;
             }
